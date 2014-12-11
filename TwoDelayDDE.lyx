@@ -1,0 +1,3065 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass elsarticle
+\begin_preamble
+\usepackage{fancyvrb}
+\cfoot{\thepage \\ Approved for Public Release, Distribution Unlimited.}
+
+\journal{Journal of Mathematical Analysis and Applications}
+
+%\usepackage{cite}
+%\usepackage{amsthm}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newproof{pf}{Proof}
+\biboptions{sort&compress}
+\end_preamble
+\options preprint, 12pt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 2
+\use_package mathdots 2
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Characteristic Roots for Two-Lag Linear Delay Differential Equations
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tnoteref{t1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+David M.
+ Bortz
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+corref{cor1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+Department of Applied Mathematics
+\begin_inset Newline newline
+\end_inset
+
+University of Colorado, Boulder, CO 80309-0526
+\end_layout
+
+\begin_layout Abstract
+We consider the class of two-lag linear delay differential equations and
+ develop a series expansion to solve for the roots of the nonlinear characterist
+ic equation.
+ Supporting numerical results are presented along with application of our
+ method to study the stability of a two-lag model from ecology.
+\end_layout
+
+\begin_layout Keywords
+Lambert W, Delay Differential Equations, Exponential Polynomials
+\end_layout
+
+\begin_layout Keywords
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tnotetext[t1]{Approved for Public Release, Distribution Unlimited.}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cortext[cor1]{dmbortz@colorado.edu}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Introduction"
+
+\end_inset
+
+Introduction
+\end_layout
+
+\begin_layout Standard
+Delay Differential Equations (DDEs) naturally arise in many fields of science
+ and engineering
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+See Erneux 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Erneux2009"
+
+\end_inset
+
+ for a good overview of different application areas.
+\end_layout
+
+\end_inset
+
+ and accordingly have been the focus of extensive study over the years.
+ The classic books by Bellman and Cooke 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "BellmanCooke1963"
+
+\end_inset
+
+ and El'sgol'ts and Norkin 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ElsgoltsNorkin1973"
+
+\end_inset
+
+ describe the significant mathematical results up to the 1960's, while subsequen
+t books by Hale and Verduyn Lunel 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "HaleVerduynLunel1993"
+
+\end_inset
+
+ and Diekmann et al., 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "DiekmannvanGilsVerduynLunelEtAl1995"
+
+\end_inset
+
+ cover the later semigroup-based frameworks.
+ A specific area in which delays arise frequently is biological modeling,
+ e.g., due to gestation periods, and there are several good texts on population
+ modeling and analysis with DDEs 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Cushing1977,Gopalsamy1992,Kuang1993,MacDonald1989"
+
+\end_inset
+
+ including a recent introductory textbook by Smith 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Smith2011"
+
+\end_inset
+
+.
+ Lastly, we direct the interested reader to several recent review articles
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "GuNiculescu2003JDynSystMeasControl,Richard2003Automatica"
+
+\end_inset
+
+ and edited works 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "BalachandranKalmar-NagyGilsinn2009,LoiseauMichielsNiculescuEtAl2009,SipahiVyhlidalNiculescuEtAl2012"
+
+\end_inset
+
+ which thoroughly cover the state-of-the-art advances in the study and applicati
+on of DDEs.
+\end_layout
+
+\begin_layout Subsection
+DDE Stability Analyses
+\end_layout
+
+\begin_layout Standard
+Consider the first order, linear, single-lag DDE
+\begin_inset Formula 
+\begin{eqnarray}
+\dot{x}(t) & = & \alpha x(t)+\beta x(t-\tau)\,;\, t>0\,,\label{eq:DDE eqn}\\
+x(t) & = & \phi(t)\,;\, t\leq0\,,\label{eq:DDE hist}
+\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula $\phi(t)$
+\end_inset
+
+ is the initial history function (which need not satisfy 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:DDE eqn"
+
+\end_inset
+
+).
+ The Laplace transform of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:DDE eqn"
+
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{equation}
+s=\alpha+\beta e^{-s\tau}\,,\label{eq:nonline eval eqn 1}
+\end{equation}
+
+\end_inset
+
+a transcendental equation with an infinite number of roots 
+\begin_inset Formula $\{s_{j}\}$
+\end_inset
+
+ in the complex plane (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:computed eval roots"
+
+\end_inset
+
+ for an example).
+ Thus the solutions are constructed as an infinite series 
+\begin_inset Formula 
+\begin{eqnarray*}
+y(t) & = & \sum_{j=-\infty}^{\infty}C_{j}e^{s_{j}t}\,,
+\end{eqnarray*}
+
+\end_inset
+
+and we note that these basis functions 
+\begin_inset Formula $e^{s_{j}t}$
+\end_inset
+
+ form a Schauder basis for 
+\begin_inset Formula $L^{p}$
+\end_inset
+
+ functions over a finite domain.
+ The coefficients 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ can be computed via evaluating the history function 
+\begin_inset Formula $\phi(t)$
+\end_inset
+
+ and the basis functions 
+\begin_inset Formula $e^{s_{j}t}$
+\end_inset
+
+ at 
+\begin_inset Formula $2N+1$
+\end_inset
+
+ timepoints in 
+\begin_inset Formula $[-\tau,0]$
+\end_inset
+
+ and then linearly solving for 
+\begin_inset Formula $2N+1$
+\end_inset
+
+ of the 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+'s.
+\end_layout
+
+\begin_layout Standard
+The transcendental equation in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:nonline eval eqn 1"
+
+\end_inset
+
+ belongs to a well-known class of equations known as 
+\emph on
+exponential polynomials
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Bell1934AnnMath,Moreno1973CompsitioMath,Ritt1929TransAmMathSoc"
+
+\end_inset
+
+ and many researchers in DDEs have (understandably) chosen to study them
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "AvellarHale1980JMathAnalAppl,CookevandenDriessche1986EunkcialajEkvacioj"
+
+\end_inset
+
+.
+ Moreover, they arise quite naturally in the Evans functions used to determine
+ stability of traveling waves for PDEs with time delays 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "SamaeySandstede2005DynSyst"
+
+\end_inset
+
+.
+ In the broader mathematics community, research into this class of algebraic
+ equations is very active and extends to numerical schemes for computing
+ the roots (see papers by Jarlebring such as 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Jarlebring2009JComputApplMath"
+
+\end_inset
+
+) and applications to fields afar as quantum computing 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Sasaki2010QuantumInfProcess"
+
+\end_inset
+
+.
+ Regardless of their origin, the computation and estimation of properties
+ of the roots to equations such as 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:nonline eval eqn 1"
+
+\end_inset
+
+ is clearly important in many ares of applied mathematics.
+\end_layout
+
+\begin_layout Standard
+A primary goal in the study of linear (and linearized) DDEs is to identify
+ the value of the the delay 
+\begin_inset Formula $\tau$
+\end_inset
+
+ for which equilibria become unstable, i.e., when the real part of the principal
+ root 
+\begin_inset Formula $\mbox{Re}(s_{0})$
+\end_inset
+
+ becomes positive.
+ A traditional strategy for proving that such a 
+\begin_inset Formula $\tau$
+\end_inset
+
+ exists is to separate 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:nonline eval eqn 1"
+
+\end_inset
+
+ into real and imaginary equations and prove that for the 
+\begin_inset Formula $\tau_{*}$
+\end_inset
+
+ such that 
+\begin_inset Formula $s_{0}(\tau_{*})$
+\end_inset
+
+ is purely imaginary, the root passes through to the positive real half
+ of the plane, i.e., 
+\begin_inset Formula 
+\[
+\left.\frac{d}{d\tau}\mbox{Re}(s_{0}(\tau))\right|_{\tau=\tau_{*}}>0\,.
+\]
+
+\end_inset
+
+ Many researchers have been very successful in establishing stability results
+ using this framework 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "FordeNelson2004JMathAnalAppl,MahaffyJoinerZak1995IntJBifurcChaos"
+
+\end_inset
+
+, even for system with distributed delays 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "CookevandenDriessche1996JMathBiol,YuanBelair2011SIAMJApplDynSyst"
+
+\end_inset
+
+, multiple delays 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "BraddockvandenDriessche1983JAustMathSocSerBApplMath,LiRuanWei1999JMathAnalAppl,RuanWei2003DynContinDiscreteImpulsSystSerA"
+
+\end_inset
+
+, and fractional order derivatives 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "DengLiLu2007NonlinearDyn"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Relationship between DDEs and Lambert W function
+\end_layout
+
+\begin_layout Standard
+In their 2003 article, Asl and Ulsoy 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "AslUlsoy2003JDynSystMeasControl"
+
+\end_inset
+
+ connected the roots of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:nonline eval eqn 1"
+
+\end_inset
+
+ with solutions to a specific exponential polynomial known as the 
+\emph on
+Lambert W
+\emph default
+ equation 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "CorlessGonnetHareEtAl1996AdvComputMath,CorlessJeffreyKnuth1997"
+
+\end_inset
+
+.
+ Briefly: to solve for the roots to 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:nonline eval eqn 1"
+
+\end_inset
+
+, rewrite the equation in the form 
+\begin_inset Formula 
+\[
+\tau(s-\alpha)e^{\tau(s-\alpha)}=\beta\tau e^{-\alpha\tau}\,,
+\]
+
+\end_inset
+
+and define a new function 
+\begin_inset Formula $W$
+\end_inset
+
+ such that 
+\begin_inset Formula $W(\beta\tau e^{-\alpha\tau})=\tau(s-\alpha)$
+\end_inset
+
+.
+ The equation to be solved is now 
+\begin_inset Formula 
+\begin{equation}
+W(\beta\tau e^{-\alpha\tau})e^{W(\beta\tau e^{-\alpha\tau})}=\beta\tau e^{-\alpha\tau}\,,\label{eq:nonlin eval eqn with W}
+\end{equation}
+
+\end_inset
+
+which is in the same form as 
+\begin_inset Formula $W(x)e^{W(x)}=x$
+\end_inset
+
+, the well-studied Lambert W equation.
+ The roots to 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:nonline eval eqn 1"
+
+\end_inset
+
+ are thus 
+\begin_inset Formula 
+\[
+s=\frac{1}{\tau}W(\beta\tau e^{-\alpha\tau})+\alpha\,.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Caratheodory provided the principal solution to the Lambert W function 
+\begin_inset Formula 
+\[
+W_{0}(x)=\sum_{n=1}^{\infty}\frac{(-n)^{n-1}}{n!}x^{n}\,,
+\]
+
+\end_inset
+
+and all other branches have been computed as well
+\begin_inset Formula 
+\begin{equation}
+W_{j}(x)=\ln(x)+2\pi ij-\ln(\ln(x)+2\pi ij)+\sum_{l=0}^{\infty}\sum_{m=1}^{\infty}C_{lm}\frac{(\ln(\ln(x)+2\pi ij))^{m}}{(\ln(x)+2\pi ikj)^{l+m}}\,,\label{eq:wk series}
+\end{equation}
+
+\end_inset
+
+with coefficients 
+\begin_inset Formula 
+\[
+C_{lm}=\frac{1}{m!}(-1)^{l}{l+m \brack l+1}\,.
+\]
+
+\end_inset
+
+expressed in terms of the unsigned Stirling numbers of the first kind 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "AbramowitzStegun1972"
+
+\end_inset
+
+.
+ This expansion to compute the different roots for the Lambert W function
+ was presented by de
+\begin_inset space ~
+\end_inset
+
+Bruijn 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "deBruijn1958"
+
+\end_inset
+
+, with Comtet 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Comtet1974"
+
+\end_inset
+
+ rewriting de
+\begin_inset space ~
+\end_inset
+
+Bruijn's expansion in terms of the Stirling numbers and Corless et al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "CorlessGonnetHareEtAl1996AdvComputMath"
+
+\end_inset
+
+ correcting a typographic error in equation (2.4.4) in Comtet 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Comtet1974"
+
+\end_inset
+
+.
+ Lastly, we note the 
+\series bold
+lambertw 
+\series default
+function in Matlab, 
+\series bold
+LambertW 
+\series default
+in Maple, and 
+\series bold
+ProductLog 
+\series default
+in Mathematica allow for the numerically accurate computation of 
+\begin_inset Formula $W_{j}(x)$
+\end_inset
+
+ for any branch 
+\begin_inset Formula $j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Since Asl and Ulsoy's original article, the connection between DDE characteristi
+c roots and solutions to Lambert W has been substantially extended and expanded
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ChenMoore2002Automatica,ChenMoore2002NonlinearDyn,ChenXueGu2003DynContinDiscreteImpulsSystSerB,ChengHwang2006IEEProcControlTheoryAppl,CogandePaor2011JElectrEng,HwangCheng2005,HwangCheng2005Automatica,JarlebringDamm2007Automatica,ShinozakiMori2006Automatica,WangHu2008JSoundVib,YiNelsonUlsoy2007DynContinDiscreteImpulsSystSerA,YiNelsonUlsoy2008IEEETransAutomControl,YiUlsoy2006,YiUlsoyNelson2006"
+
+\end_inset
+
+, culminating in a monograph 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "YiNelsonUlsoy2010"
+
+\end_inset
+
+.
+ These results, however, do not extend to multi-lag DDEs as (to the best
+ of our knowledge) the nonlinear characteristic equation can be cast as
+ a Lambert W equation 
+\emph on
+only
+\emph default
+ when the DDE has a 
+\emph on
+single
+\emph default
+ lag.
+\end_layout
+
+\begin_layout Standard
+In this work, we develop a series expansion for the roots to the nonlinear
+ characteristic equation corresponding to a 
+\emph on
+two
+\emph default
+-lag DDE.
+ While we were inspired by the original derivation of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:wk series"
+
+\end_inset
+
+, the development presented below is a bit more involved than the Lambert
+ W derivation in de Bruijn 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "deBruijn1958"
+
+\end_inset
+
+ partially due to our goal of making the truncated sums computationally
+ efficient to evaluate.
+\end_layout
+
+\begin_layout Standard
+Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Two-Lag"
+
+\end_inset
+
+ presents the main result of the paper, deriving the formula for the roots.
+ Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Numerical-Results"
+
+\end_inset
+
+ provides numerical results supporting our claims of accuracy and convergence
+ and including an application to a two-lag model from ecology.
+ Lastly, Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Conclusion-and-Discussion"
+
+\end_inset
+
+ summarizes the results of the work and discusses the natural next steps
+ for future work.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Two-Lag"
+
+\end_inset
+
+Two-Lag Development
+\end_layout
+
+\begin_layout Standard
+In this section, we develop our series expansion for the roots to the nonlinear
+ characteristic equation arising from the two-lag DDE.
+ Note that for the multi-delay case, the conventional approach focuses on
+ developing bounds for the roots (see 
+\begin_inset CommandInset citation
+LatexCommand citep
+after "\\S 12"
+key "BellmanCooke1963"
+
+\end_inset
+
+ for a good summary and overview), whereas here, we are explicitly computing
+ the roots.
+\end_layout
+
+\begin_layout Standard
+Consider a DDE with two lags 
+\begin_inset Formula $\tau_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau_{2}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\dot{x}(t)=\alpha x(t)+\beta x(t-\tau_{1})+\gamma x(t-\tau_{2})\,,
+\]
+
+\end_inset
+
+ with corresponding coefficients 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\beta$
+\end_inset
+
+, and 
+\begin_inset Formula $\gamma$
+\end_inset
+
+.
+ We will rescale and rearrange terms, defining several new variables and
+ parameters in order to reduce the equation to its essential mathematical
+ features.
+ We rescale time by the first lag 
+\begin_inset Formula $\mathfrak{t}=t/\tau_{1}$
+\end_inset
+
+, the parameters so that 
+\begin_inset Formula $\alpha_{1}=\alpha\tau_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{1}=\beta\tau_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\gamma_{1}=\gamma\tau_{1}$
+\end_inset
+
+ , 
+\begin_inset Formula $\tau=\nicefrac{\tau_{1}}{\tau_{2}}$
+\end_inset
+
+, and denote 
+\begin_inset Formula $x'(\mathfrak{t})=\frac{d}{d\mathfrak{t}}x(\mathfrak{t})=\tau_{1}\frac{d}{dt}x(t)$
+\end_inset
+
+ to obtain the equation 
+\begin_inset Formula 
+\[
+x'(\mathfrak{t})=\alpha_{1}x(\mathfrak{t})+\beta_{1}x(\mathfrak{t}-1)+\gamma_{1}x(\mathfrak{t}-\tau)\,.
+\]
+
+\end_inset
+
+ After a Laplace transform, the corresponding nonlinear characteristic equation
+ for 
+\begin_inset Formula $s\in\mathbb{C}$
+\end_inset
+
+ is thus
+\begin_inset Formula 
+\begin{equation}
+s=\alpha_{1}+\beta_{1}e^{-s}+\gamma_{1}e^{-s\tau}\,.\label{eq:schar}
+\end{equation}
+
+\end_inset
+
+We then let 
+\begin_inset Formula $\lambda=s-\alpha_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{2}=\beta_{1}e^{-\alpha_{1}}$
+\end_inset
+
+, 
+\begin_inset Formula $\gamma_{2}=\gamma_{1}e^{-\alpha_{1}\tau}$
+\end_inset
+
+, and multiply through by 
+\begin_inset Formula $e^{\lambda\tau}$
+\end_inset
+
+, yielding the much cleaner equation
+\begin_inset Formula 
+\begin{equation}
+\lambda e^{\lambda\tau}=\beta_{2}e^{(\tau-1)\lambda}+\gamma_{2}\,.\label{eq:lamchar}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inspired by the original expansion in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "deBruijn1958"
+
+\end_inset
+
+, we note that for 
+\begin_inset Formula $\left|\gamma_{2}\right|$
+\end_inset
+
+ near to or far from zero, we can write 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ as a small perturbation 
+\begin_inset Formula $u$
+\end_inset
+
+ of 
+\begin_inset Formula $\ln\gamma_{2}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\lambda=(\ln\gamma_{2}+u)/\tau\,,
+\]
+
+\end_inset
+
+ and then safely assume that
+\begin_inset Formula 
+\begin{equation}
+\left|u\right|\ll\left|\ln\gamma_{2}\right|\,.\label{eq:assump 1}
+\end{equation}
+
+\end_inset
+
+Substituting this form of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ into equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:lamchar"
+
+\end_inset
+
+ we find that
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{\tau}\left(1+\frac{u}{\ln\gamma_{2}}\right)\gamma_{2}e^{u}=\frac{\beta_{2}\gamma_{2}^{\left(\frac{\tau-1}{\tau}\right)}}{\ln\gamma_{2}}\left(e^{u}\right)^{\left(\frac{\tau-1}{\tau}\right)}+\frac{\gamma_{2}}{\ln\gamma_{2}}\,.\label{eq:lamchar2}
+\end{equation}
+
+\end_inset
+
+To proceed, we will also assume that 
+\begin_inset Formula 
+\begin{equation}
+\left|\frac{\beta_{2}}{\gamma_{2}^{1/\tau}\ln\gamma_{2}}\right|\ll1\,,\label{eq:assump 2}
+\end{equation}
+
+\end_inset
+
+in addition to 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:assump 1"
+
+\end_inset
+
+.
+ This restriction on the coefficients is a result of the chosen rearrangement
+ of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:schar"
+
+\end_inset
+
+ into 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:lamchar"
+
+\end_inset
+
+.
+ There is nothing particularly special about 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:assump 2"
+
+\end_inset
+
+ and choosing to recast 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:schar"
+
+\end_inset
+
+ differently would simply necessitate different assumptions on the parameters
+ in order for an expansion to converge.
+ In our experience, this is a reasonable assumption encountered in several
+ models (see the examples in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Numerical-Results"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Moving forward, we can solve 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:lamchar2"
+
+\end_inset
+
+ for 
+\begin_inset Formula $u$
+\end_inset
+
+ as 
+\begin_inset Formula 
+\[
+u\approx\ln\tau+\ln(\nicefrac{1}{\ln\gamma_{2}})
+\]
+
+\end_inset
+
+which means that 
+\begin_inset Formula 
+\begin{equation}
+u=\ln\tau+\ln(\nicefrac{1}{\ln\gamma_{2}})+v\label{eq:lnblah v}
+\end{equation}
+
+\end_inset
+
+where our attention now focuses on solving for a new variable 
+\begin_inset Formula $v$
+\end_inset
+
+.
+ As discussed by Corless et al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "CorlessGonnetHareEtAl1996AdvComputMath"
+
+\end_inset
+
+, the nested logarithms in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:lnblah v"
+
+\end_inset
+
+ need not select the same branch.
+ As Corless et al.
+\begin_inset space ~
+\end_inset
+
+do, we will let the outer logarithm be the principal branch and denote 
+\begin_inset Formula $\mbox{Ln}$
+\end_inset
+
+ as the inner logarithm for which we have not yet chosen a branch, i.e., 
+\begin_inset Formula 
+\[
+u=\ln\tau+\ln(\nicefrac{1}{\mbox{Ln}\gamma_{2}})+v\,.
+\]
+
+\end_inset
+
+By substituting 
+\begin_inset Formula $u$
+\end_inset
+
+ back into 
+\begin_inset Formula $\eqref{eq:lamchar2},$
+\end_inset
+
+ we can cancel several terms and simplify our problem to one of finding
+ the roots 
+\begin_inset Formula $v$
+\end_inset
+
+ to the equation
+\begin_inset Formula 
+\[
+1+\frac{\ln\tau}{\mbox{Ln}\gamma_{2}}+\frac{\ln(\nicefrac{1}{\mbox{Ln}\gamma_{2}})}{\mbox{Ln}\gamma_{2}}+\frac{1}{\mbox{Ln}\gamma_{2}}v=\frac{\beta_{2}}{\gamma_{2}}\left(\frac{\gamma_{2}\tau}{\mbox{Ln}\gamma_{2}}\right)^{\left(\frac{\tau-1}{\tau}\right)}e^{-\nicefrac{v}{\tau}}+e^{-v}
+\]
+
+\end_inset
+
+If we let
+\begin_inset Formula 
+\[
+\sigma=\frac{1}{\mbox{Ln}\gamma_{2}}\,,\, c=\left(\frac{\beta_{2}}{\gamma_{2}}\right)\left(\frac{\gamma_{2}\tau}{\mbox{Ln}\gamma_{2}}\right)^{\left(\frac{\tau-1}{\tau}\right)}\,,\,\mu=\frac{\ln\tau\ln(\nicefrac{1}{\mbox{Ln}\gamma_{2}})}{\mbox{Ln}\gamma_{2}}-c\,,
+\]
+
+\end_inset
+
+then our efforts will focus on identifying the roots of 
+\begin_inset Formula 
+\begin{equation}
+f(v)\equiv e^{-v}+ce^{-v/\tau}-\sigma v-1-c-\mu\,.\label{eq:f}
+\end{equation}
+
+\end_inset
+
+Note that the motivation for adding and subtracting 
+\begin_inset Formula $c$
+\end_inset
+
+ will become self-evident in the proof for the following lemma.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lem}
+\end_layout
+
+\end_inset
+
+If there exists positive numbers 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ such that 
+\begin_inset Formula $\left|\sigma\right|<a$
+\end_inset
+
+ and 
+\begin_inset Formula $\left|\mu\right|<a$
+\end_inset
+
+ then 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:f"
+
+\end_inset
+
+ has a single root inside the region 
+\begin_inset Formula $\left|v\right|\leq b$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pf}
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $\delta$
+\end_inset
+
+ denote the lower bound of 
+\begin_inset Formula $\left|e^{-v}-1\right|$
+\end_inset
+
+ on 
+\begin_inset Formula $\left|v\right|=b$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta_{\tau}$
+\end_inset
+
+ denote the lower bound of 
+\begin_inset Formula $\left|ce^{-v/\tau}-c\right|$
+\end_inset
+
+ on 
+\begin_inset Formula $\left|v\right|=b$
+\end_inset
+
+.
+ We can arbitrarily choose 
+\begin_inset Formula $b=\pi\min\{1,\tau\}$
+\end_inset
+
+ since 
+\begin_inset Formula $e^{-v}-1$
+\end_inset
+
+ has only one root at zero for 
+\begin_inset Formula $b\in(0,2\pi)$
+\end_inset
+
+ and 
+\begin_inset Formula $c(e^{-v/\tau}-1)$
+\end_inset
+
+ also has only one root at 
+\begin_inset Formula $v=0$
+\end_inset
+
+ for 
+\begin_inset Formula $b\in(0,2\pi\tau)$
+\end_inset
+
+.
+ Thus there is only one root at 
+\begin_inset Formula $v=0$
+\end_inset
+
+ for 
+\begin_inset Formula $e^{-v}-1+c(e^{-v/\tau}-1)$
+\end_inset
+
+ in the region 
+\begin_inset Formula $\left|v\right|\leq\pi\min\{1,\tau\}$
+\end_inset
+
+ and that on 
+\begin_inset Formula $\left|v\right|=\pi\min\{1,\tau\}$
+\end_inset
+
+ we have a lower bound of 
+\begin_inset Formula $\min\{\delta,\delta_{\tau}\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $a=\min\{\delta,\delta_{\tau}\}/(2(\pi+1))$
+\end_inset
+
+ and then for 
+\begin_inset Formula $\left|\sigma\right|<a$
+\end_inset
+
+, 
+\begin_inset Formula $\left|\mu\right|<a$
+\end_inset
+
+, and 
+\begin_inset Formula $\left|v\right|=\pi\min\{1,\tau\}$
+\end_inset
+
+ we have that 
+\begin_inset Formula 
+\[
+\left|\sigma v+\mu\right|\leq\left|\sigma\right|\left|v\right|+\left|\mu\right|\leq\frac{\min\{\delta,\delta_{\tau}\}}{2(\pi+1)}\cdot\pi+\frac{\min\{\delta,\delta_{\tau}\}}{2(\pi+1)}=\frac{\min\{\delta,\delta_{\tau}\}}{2}<\min\{\delta,\delta_{\tau}\}\,.
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $\left|e^{-v}-1+ce^{-v/\tau}-c\right|>\min\{\delta,\delta_{\tau}\}$
+\end_inset
+
+ on the curve defined by 
+\begin_inset Formula $\left|v\right|=\pi\min\{1,\tau\}$
+\end_inset
+
+, we have satisfied the hypotheses of Rouch
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+'s Theorem 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "BrownChurchill1996"
+
+\end_inset
+
+ and can therefore conclude that there is only one root to 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:f"
+
+\end_inset
+
+ inside 
+\begin_inset Formula $\left|v\right|=\pi\min\{1,\tau\}$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pf}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+By Cauchy's theorem, we can then compute 
+\begin_inset Formula $v$
+\end_inset
+
+ using the well-known formula from complex analysis
+\begin_inset Formula 
+\begin{equation}
+v=\frac{1}{2\pi i}\oint_{\left|\zeta\right|=b}\frac{f'(\zeta)\zeta}{f(\zeta)}\mbox{d}\zeta=\frac{1}{2\pi i}\oint_{\left|\zeta\right|=b}\frac{(-e^{-\zeta}-ce^{-\zeta/\tau}/\tau-\sigma)\zeta}{e^{-\zeta}+ce^{-\zeta/\tau}-\sigma\zeta-1-c-\mu}\mbox{d}\zeta\,,\label{eq:contourintegral}
+\end{equation}
+
+\end_inset
+
+ for 
+\begin_inset Formula $b=\pi\min\{1,\tau\}$
+\end_inset
+
+.
+ The 
+\begin_inset Formula $1/f(\zeta)$
+\end_inset
+
+ can be expanded into the following (absolutely and uniformly convergent)
+ power series
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{f(\zeta)}=\sum_{k=0}^{\infty}\sum_{m=0}^{\infty}(e^{-\zeta}+ce^{-\zeta/\tau}-1-c)^{-k-m-1}\zeta^{k}\sigma^{k}\mu^{m}a_{m}^{m+k}\,,\label{eq:finv series}
+\end{equation}
+
+\end_inset
+
+with some coefficients 
+\begin_inset Formula $a_{m}$
+\end_inset
+
+.
+ The substitution of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:finv series"
+
+\end_inset
+
+ into 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:contourintegral"
+
+\end_inset
+
+ and evaluation of the contour integral generates a double series in 
+\begin_inset Formula $m$
+\end_inset
+
+ and 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ Note, however, that the 
+\begin_inset Formula $m=0$
+\end_inset
+
+ term is zero because the integrand has the same number of roots (at 
+\begin_inset Formula $\zeta=0$
+\end_inset
+
+) in the numerator and the denominator.
+ The doubly infinite and absolutely convergent power series for 
+\begin_inset Formula $v$
+\end_inset
+
+ in 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is thus 
+\begin_inset Formula 
+\begin{equation}
+v=\sum_{k=0}^{\infty}\sum_{m=1}^{\infty}a_{km}\sigma^{k}\mu^{m}\,,\label{eq:vexpansion1}
+\end{equation}
+
+\end_inset
+
+ where the 
+\begin_inset Formula $a_{km}$
+\end_inset
+
+ are coefficients independent of 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ The coefficients 
+\begin_inset Formula $a_{km}$
+\end_inset
+
+ are computed by first computing a power series expansion in 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and then applying the Lagrange Inversion Theorem 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "AbramowitzStegun1972"
+
+\end_inset
+
+ to obtain 
+\begin_inset Formula $v$
+\end_inset
+
+ as a function of 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ To facilitate rearrangement of this series into the form of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:vexpansion1"
+
+\end_inset
+
+, we denote 
+\begin_inset Formula 
+\[
+f_{2}(w)\equiv f(w)-f(0)\,,
+\]
+
+\end_inset
+
+and note that the derivative of 
+\begin_inset Formula $f(w)$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is 
+\begin_inset Formula $-w$
+\end_inset
+
+.
+ Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:vexpansion1"
+
+\end_inset
+
+ can thus be written (after the power series expansion in 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ around zero) as 
+\begin_inset Formula 
+\begin{equation}
+v=\sum_{k=0}^{\infty}\sum_{m=1}^{\infty}m^{\bar{k}}h_{m,k}\frac{\mu^{m}}{m!}\frac{\sigma^{k}}{k!}\,,\label{eq:veqnsum}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $m^{\bar{k}}$
+\end_inset
+
+ is a rising factorial
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+A rising factorial 
+\begin_inset Formula $m^{\bar{k}}$
+\end_inset
+
+ is defined as 
+\begin_inset Formula $m(m+1)\cdots(m+k-1)$
+\end_inset
+
+ and a falling factorial 
+\begin_inset Formula $m^{\underline{k}}$
+\end_inset
+
+ is defined as 
+\begin_inset Formula $m(m-1)\cdots(m-k+1)$
+\end_inset
+
+.
+ We note that in the combinatorics literature, 
+\begin_inset Formula $m^{(k)}$
+\end_inset
+
+ is more commonly used as a rising factorial (also known as the Pochhammer
+ symbol) and 
+\begin_inset Formula $(m)_{k}$
+\end_inset
+
+ as a falling factorial.
+ Here we choose the notation 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $m^{\bar{k}}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ for rising factorial to prevent confusion later on when using the superscript-p
+arentheses notation to denote differentiation.
+ If it also the notation advocated by Knuth 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Knuth1992AmMathMon"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+, and 
+\begin_inset Formula $h_{m,k}=\lim_{w\to0}h_{m,k}(w)$
+\end_inset
+
+ with
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Formula 
+\[
+h_{m,k}(w)=\frac{d^{m-1}}{dw^{m-1}}\left(w^{m+k}f_{2}(w)^{-(m+k)}\right)\,.
+\]
+
+\end_inset
+
+Straightforward application of the product rule yields that 
+\begin_inset Formula 
+\[
+h_{m,k}(w)=\sum_{l=0}^{m-1}{m-1 \choose l}\left(\frac{d^{m-1-l}}{dw^{m-1-l}}w^{m+k}\right)\left(\frac{d^{l}}{dw^{l}}f_{2}(w)^{-(m+k)}\right)\,.
+\]
+
+\end_inset
+
+ The 
+\begin_inset Formula $l$
+\end_inset
+
+th derivative of 
+\begin_inset Formula $f_{2}(w)^{-(m+k)}$
+\end_inset
+
+ is computed using Fa
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+`a
+\end_layout
+
+\end_inset
+
+ di Bruno's formula 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Johnson2002AmMathMon"
+
+\end_inset
+
+ for higher derivatives of composite functions and thus 
+\begin_inset Formula 
+\[
+h_{m,k}(w)=\sum_{l=0}^{m-1}a_{klm}w^{k+l+1}\sum_{p=0}^{l}b_{kmp}f_{2}(w)^{-(m+k+p)}\mathbb{B}_{l,p}(f_{2}'(w),\ldots,f_{2}^{(l-p+1)}(w))\,,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{eqnarray*}
+a_{klm}={m-1 \choose l}\frac{(m+k)!}{(k+l+1)!} & \,,\, & b_{kmp}=(-1)^{p}(m+k)^{\bar{p}}\,,
+\end{eqnarray*}
+
+\end_inset
+
+and 
+\begin_inset Formula $\mathbb{B}_{l,p}$
+\end_inset
+
+ are the partial Bell polynomials 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Aldrovandi2001,Bell1927AnnMath,Bell1934AnnMath,Wheeler1987ACMSIGSAMBull"
+
+\end_inset
+
+.
+ Recall that for an arbitrary sequence 
+\begin_inset Formula $\{x_{i}\}$
+\end_inset
+
+ and 
+\begin_inset Formula $l,p\in\mathbb{N}$
+\end_inset
+
+, the partial Bell polynomials are
+\begin_inset Formula 
+\[
+\mathbb{B}_{l,p}(x_{1},\ldots,x_{l-p+1})=\sum\frac{l!}{j_{1}!j_{2}!\cdots j_{l-p+1}!}\left(\frac{x_{1}}{1!}\right)^{j_{1}}\left(\frac{x_{2}}{2!}\right)^{j_{2}}\cdots\left(\frac{x_{l-p+1}}{(l-p+1)!}\right)^{j_{l-p+1}}\,,
+\]
+
+\end_inset
+
+with the sum taken over all sequences 
+\begin_inset Formula $\{j_{1},\ldots,j_{n-k+1}\}\in\mathbb{N}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\sum_{i=1}^{n-k+1}j_{i}=m$
+\end_inset
+
+ and 
+\begin_inset Formula $\sum_{i=1}^{n-k+1}ij_{i}=k$
+\end_inset
+
+ (a simple Diophantine linear system).
+ The 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+sets of indices 
+\begin_inset Formula $\{j_{i}\}$
+\end_inset
+
+ satisfying these sums
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ are just a way of describing all possible partitions of a set of size 
+\begin_inset Formula $k$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "EncinasdelReyMasque2005DiscreteApplMath"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In what follows, the argument for the Bell polynomial frequently takes the
+ form 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\{f_{2}^{(1+i)}(0)\}_{i=1}^{n}$
+\end_inset
+
+.
+ To improve the clarity of the formulas, we denote 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\[
+F_{n}=\{f_{2}^{(1+i)}(0)\}_{i=1}^{n}\,;\, n\in\mathbb{N},
+\]
+
+\end_inset
+
+ to be a finite sequence of higher derivatives of 
+\begin_inset Formula $f_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Formally taking the limit for 
+\begin_inset Formula $\lim_{w\to0}h_{m,k}(w)$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\begin{equation}
+\frac{\sum_{l=0}^{m-1}\tilde{a}_{klm}\sum_{p=0}^{l}\sum_{q=0}^{2m-2-l}\tilde{b}_{klmpq}\mathbb{B}_{2m-2-l-q,m-1-p}(F_{m-l-q+p})\mathbb{B}_{l,p}^{(q)}(F_{l-p+1})}{f_{2}^{''}(0)^{2m+k-1}}\,,\label{eq:hmkw}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{eqnarray*}
+\tilde{a}_{klm} & = & a_{klm}{2m+k-1 \choose 2m-l-2}(k+1+l)!\,,\\
+\tilde{b}_{klmpq} & = & b_{kmp}{2m-2-l \choose q}\frac{(m-1-p)!}{(2m+k-1)!}\,,\,.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The evaluation of most terms in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:hmkw"
+
+\end_inset
+
+ is computationally straightforward and efficient, except the term involving
+ 
+\begin_inset Formula $\mathbb{B}_{l,p}^{(q)}$
+\end_inset
+
+.
+ For example, the sum in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:veqnsum"
+
+\end_inset
+
+ for 
+\begin_inset Formula $m=10$
+\end_inset
+
+ and 
+\begin_inset Formula $k=100$
+\end_inset
+
+ can take around one minute on an Intel i7 cpu when using Mathematica to
+ analytically find the 
+\begin_inset Formula $q$
+\end_inset
+
+th derivative of 
+\begin_inset Formula $\mathbb{B}_{l,p}$
+\end_inset
+
+ and then sum the terms.
+ In 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Mishkov2000IntJMathMathSci"
+
+\end_inset
+
+, Mishkov derived a formula for 
+\begin_inset Formula $\mathbb{B}_{l,p}^{(q)}$
+\end_inset
+
+, but to implement it would consists of solving a cascade of linear Diophantine
+ equations
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+These have no closed form solution and would thus also need to be solved.
+\end_layout
+
+\end_inset
+
+ to obtain the correct indices for the sums.
+ 
+\end_layout
+
+\begin_layout Standard
+We will use a recursive property of 
+\begin_inset Formula $\mathbb{B}_{l,p}^{(k)}$
+\end_inset
+
+ to avoid having to solve systems of Diophantine equations.
+ Note that for an arbitrary sequence 
+\begin_inset Formula $X=\{x_{j}\}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial x_{j}}\mathbb{B}_{l,p}(X)={l \choose j}\mathbb{B}_{l-j,p-1}(X)\,,
+\]
+
+\end_inset
+
+and thus in the context of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:hmkw"
+
+\end_inset
+
+ we have that 
+\begin_inset Formula 
+\begin{equation}
+\mathbb{B}_{l,p}^{(q)}(F_{l-p+1})=\sum_{r_{1}=1}^{l-p+1}{l \choose r_{1}}\sum_{r_{2}=0}^{q-1}{q-1 \choose r_{2}}\mathbb{B}_{l-r_{1},p-1}^{(q-r_{2}-1)}(F_{l-p+1})\,,\label{eq:ddq Blp}
+\end{equation}
+
+\end_inset
+
+recursively allows (eventual) computation of the derivatives by evaluation
+ of the partial Bell polynomials themselves.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+For  a good summary of known properties of Bell polynomials, we direct the
+ interested reader to Aldrovandi 
+\begin_inset CommandInset citation
+LatexCommand citep
+after "{\\S}13 \\& Appendix A.5"
+key "Aldrovandi2001"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ The use of Mathematica's memoization features for recursive sums substantially
+ sped up the computation as well, naturally at the expense of increased
+ memory usage.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Memoization is a technique for reducing the number of function calls by
+ storing the results of previous calls 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Michie1968Nature"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We now have that the principal branch of the roots of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:lamchar"
+
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{equation}
+\lambda=(\ln\gamma_{2}+\ln\tau+\ln(\frac{1}{\ln\gamma_{2}})+v)/\tau\,,\label{eq:lambda principle branch}
+\end{equation}
+
+\end_inset
+
+where 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+v=\sum_{k=0}^{\infty}\sum_{m=1}^{\infty}m^{\bar{k}}h_{m,k}\frac{\mu^{m}}{m!}\frac{\sigma^{k}}{k!}\,.\label{eq:veqnsum-1}
+\end{equation}
+
+\end_inset
+
+We note that for 
+\begin_inset Formula $i\geq1$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+f_{2}^{(1+i)}(0)=(-1)^{i}(1+c\tau^{-i})\,.
+\]
+
+\end_inset
+
+and thus 
+\begin_inset Formula $h_{m,k}$
+\end_inset
+
+ is defined as 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\sum_{l=0}^{m-1}\sum_{p=0}^{l}\sum_{q=0}^{2m-2-l}\hat{a}_{klmpq}\mathbb{B}_{2m-2-l-q,m-1-p}(F_{m-l-q+p})\mathbb{B}_{l,p}^{(q)}(F_{l-p+1})}{\left(-(1+c\tau^{-1})\right)^{2m+k-1}}\,,\label{eq:hmk}
+\end{equation}
+
+\end_inset
+
+ where 
+\begin_inset Formula 
+\[
+F_{n}=\{(-1)^{n}(1+c\tau^{-n})\}_{i=1}^{n}\,,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\hat{a}_{klmpq} & = & \frac{(-1)^{p}(k+m)\Gamma(m)\Gamma(m-p)\Gamma(k+m+p)}{q!l!\Gamma(2+k+l)\Gamma(-l+m)\Gamma(-1-l+2m-q)}\,,
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sigma=\frac{1}{\mbox{Ln}\gamma_{2}}\,,\, c=\left(\frac{\beta_{2}}{\gamma_{2}}\right)\left(\frac{\gamma_{2}\tau}{\mbox{Ln}\gamma_{2}}\right)^{\left(\frac{\tau-1}{\tau}\right)}\,,\,\mu=\frac{\ln\tau+\ln(\nicefrac{1}{\mbox{Ln}\gamma_{2}})}{\mbox{Ln}\gamma_{2}}-c\,,
+\]
+
+\end_inset
+
+and recalling that 
+\begin_inset Formula $\mathbb{B}_{l,p}^{(q)}$
+\end_inset
+
+ is defined recursively in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ddq Blp"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The full description of the 
+\begin_inset Formula $j$
+\end_inset
+
+th branch root for the characteristic equation in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:schar"
+
+\end_inset
+
+ is therefore 
+\begin_inset Formula 
+\[
+s_{j}=\frac{1}{\tau}(\ln_{j}\gamma_{2}+\ln(\frac{1}{\ln_{j}\gamma_{2}})+\ln\tau+v_{j})+\alpha_{1}\,,
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\ln_{j}(z)=|z|+\arg(z)+2\pi ij$
+\end_inset
+
+, 
+\begin_inset Formula $v$
+\end_inset
+
+ is defined in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:veqnsum-1"
+
+\end_inset
+
+, and the subscript on the 
+\begin_inset Formula $v$
+\end_inset
+
+ indicates the chosen branch for the logarithms in 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, 
+\begin_inset Formula $c$
+\end_inset
+
+, and 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For the convenience of the reader, the Mathematica code is available in
+ the github repository for the Mathematical Biology Group at the University
+ of Colorado.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/MathBioCU
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ This code solves for 
+\begin_inset Formula $s_{j}$
+\end_inset
+
+ as a function of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\beta$
+\end_inset
+
+, 
+\begin_inset Formula $\gamma$
+\end_inset
+
+, 
+\begin_inset Formula $\tau_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\tau_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $j$
+\end_inset
+
+, 
+\begin_inset Formula $m$
+\end_inset
+
+, and 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ Lastly, upon request, the author will supply versions of the code with
+ arguments 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\gamma_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\tau$
+\end_inset
+
+, 
+\begin_inset Formula $j$
+\end_inset
+
+, 
+\begin_inset Formula $m$
+\end_inset
+
+, and 
+\begin_inset Formula $k$
+\end_inset
+
+ as well as versions which obtain significant speedups by using Mathematica's
+ memoization, compilation, and parallelization features.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Numerical-Results"
+
+\end_inset
+
+Numerical Results
+\end_layout
+
+\begin_layout Standard
+In what follows, we denote 
+\begin_inset Formula $\hat{s}_{j}$
+\end_inset
+
+ as the actual root.
+ Where relevant, the 
+\begin_inset Formula $s_{j}$
+\end_inset
+
+ values were computed using the damped Newton's method implemented in Mathematic
+a's 
+\series bold
+FindRoot
+\series default
+ applied to equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:schar"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Convergence
+\end_layout
+
+\begin_layout Standard
+In this section, we provide numerical results for the estimation of the
+ roots.
+ Consider the two lag DDE
+\begin_inset Formula 
+\begin{eqnarray}
+\dot{x}(t) & = & \alpha x(t)+\beta x(t-\tau_{1})+\gamma x(t-\tau_{2})\,;\, t>0\,,\label{eq:DDE eqn redux}\\
+x(t) & = & \phi(t)\,;\, t\leq0\,,\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+ system from above with transfer function 
+\begin_inset Formula 
+\begin{equation}
+(s-\alpha-\beta e^{-s\tau_{1}}-\gamma e^{-s\tau_{2}})^{-1}\,.\label{eq:transfer function}
+\end{equation}
+
+\end_inset
+
+We note that the accuracy of our asymptotic expansion rests on the assumption
+ that 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:assump 2"
+
+\end_inset
+
+ is small and so we choose 
+\begin_inset Formula 
+\begin{equation}
+\beta_{2}=0.001\,,\,\gamma_{2}=6\,,\,\tau=4\,,\,\alpha_{1}=-1\,.\label{eq:used pars 2}
+\end{equation}
+
+\end_inset
+
+which means that the parameters in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:DDE eqn redux"
+
+\end_inset
+
+ are 
+\begin_inset Formula 
+\begin{equation}
+\alpha=-1\,,;\,\beta\approx3.68\times10^{-4}\,,\,\gamma=0.1989\,,\,\tau_{1}=1\,,\,\tau_{2}=5\,,\label{eq:used pars orig}
+\end{equation}
+
+\end_inset
+
+and thus 
+\begin_inset Formula 
+\[
+\frac{\beta_{2}}{\gamma_{2}^{1/\tau}\ln\gamma_{2}}\approx3.6\times10^{-4}\,.
+\]
+
+\end_inset
+
+Numerical investigations suggested that the series converges in 
+\begin_inset Formula $m$
+\end_inset
+
+ about a factor of four times faster than it converges in 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ Accordingly, Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:convergence in n"
+
+\end_inset
+
+ depicts the convergence in 
+\begin_inset Formula $m$
+\end_inset
+
+ with 
+\begin_inset Formula $k=m^{4}$
+\end_inset
+
+.
+ We note that up to 
+\begin_inset Formula $m=8$
+\end_inset
+
+, the series converges nicely.
+ For 
+\begin_inset Formula $m>8$
+\end_inset
+
+, however, the series exhibits a reduction of accuracy, likely due to the
+ numerical issues inherent in evaluating such large series.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename mkErrorConv.pdf
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:convergence in n"
+
+\end_inset
+
+Plot of 
+\begin_inset Formula $\log_{10}|\hat{s}_{0}-s_{0}|$
+\end_inset
+
+ for the series approximation to 
+\begin_inset Formula $\hat{s}_{0}$
+\end_inset
+
+ as a function of 
+\begin_inset Formula $m$
+\end_inset
+
+ where 
+\begin_inset Formula $k=m^{4}$
+\end_inset
+
+.
+ The parameters for the two-lag DDE were those from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:used pars orig"
+
+\end_inset
+
+ .
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lastly, in subsequent computations of 
+\begin_inset Formula $s_{j}$
+\end_inset
+
+, we choose to truncate the series at 
+\begin_inset Formula $m=8$
+\end_inset
+
+ and 
+\begin_inset Formula $k=1000$
+\end_inset
+
+ to maintain accuracy.
+ We obtain the following roots as depicted in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:computed eval roots"
+
+\end_inset
+
+.
+ For comparison, Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:actual evals transfer function"
+
+\end_inset
+
+ depicts a contour plot of the transfer function in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:transfer function"
+
+\end_inset
+
+ (lighter colors are larger values) and we note that our computed roots
+ match up nicely with the singularities of the transfer function.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename computedEvalsForTwoDelays.pdf
+	height 2.8in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:computed eval roots"
+
+\end_inset
+
+Roots 
+\begin_inset Formula $s_{j}$
+\end_inset
+
+ computed using the expansion in Section 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sec:Two-Lag"
+
+\end_inset
+
+.
+ The parameters for the two-lag DDE were those from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:used pars orig"
+
+\end_inset
+
+ .
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename actualEvalsForTwoDelays.pdf
+	height 2.8in
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:actual evals transfer function"
+
+\end_inset
+
+Contours of 
+\begin_inset Formula $\log_{10}|(s-\alpha-\beta e^{-s\tau_{1}}-\gamma e^{-s\tau_{2}})^{-1}|$
+\end_inset
+
+ for 
+\begin_inset Formula $c\in\mathbb{C}$
+\end_inset
+
+.
+ The horizontal axis is the real part of 
+\begin_inset Formula $s$
+\end_inset
+
+ and the vertical axis is the imaginary part of 
+\begin_inset Formula $s$
+\end_inset
+
+.
+ Note how the peaks (lighter regions) coincide with the computed roots in
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:computed eval roots"
+
+\end_inset
+
+.
+ The parameters for the two-lag DDE were those from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:used pars orig"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Example"
+
+\end_inset
+
+Example
+\end_layout
+
+\begin_layout Standard
+In modeling the life cycle of the Australian blowfly 
+\emph on
+Lucila cuprina
+\emph default
+, Braddock and van den Driessche 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "BraddockvandenDriessche1983JAustMathSocSerBApplMath"
+
+\end_inset
+
+ developed the following two-lag DDE
+\begin_inset Formula 
+\begin{equation}
+\frac{dx}{dt}=rx(t)(1-a_{1}x(t-\tau_{1})-a_{2}x(t-\tau_{2}))\,.\label{eq:blowflydde}
+\end{equation}
+
+\end_inset
+
+ The positive equilibrium is at 
+\begin_inset Formula $x^{*}=1/(a_{1}+a_{2})$
+\end_inset
+
+ and a linearization about this point (shifting to 
+\begin_inset Formula $y=x-x^{*}$
+\end_inset
+
+) yields the equation
+\begin_inset Formula 
+\begin{equation}
+\frac{dy}{dt}\approx-rx^{*}a_{1}y(t-\tau_{1})+-rx^{*}a_{2}y(t-\tau_{2})\,.\label{eq:linearized y}
+\end{equation}
+
+\end_inset
+
+Theorem 6 in Ruan 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Ruan2006"
+
+\end_inset
+
+ summarizes the results of 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "BraddockvandenDriessche1983JAustMathSocSerBApplMath"
+
+\end_inset
+
+ nicely, providing 3 different sufficiency conditions for the existence
+ of a value of 
+\begin_inset Formula $\tau_{2}$
+\end_inset
+
+ which will incur a Hopf bifurcation.
+ We present here only the last of the possible sufficiency conditions in
+ the following theorem from 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Ruan2006"
+
+\end_inset
+
+, since these restrictions also satisfy our conditions for accurate series
+ expansion.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{thm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:hopfbifurcation"
+
+\end_inset
+
+If 
+\begin_inset Formula $a_{1}=a_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau_{1}>(2x^{*}ra_{1})^{-1}$
+\end_inset
+
+ then there is a 
+\begin_inset Formula $\tau_{2}^{0}>0$
+\end_inset
+
+ such that when 
+\begin_inset Formula $\tau_{2}=\tau_{2}^{0}$
+\end_inset
+
+ the two-lag DDE 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:blowflydde"
+
+\end_inset
+
+ exhibits a Hopf bifurcation at the equilibrium 
+\begin_inset Formula $x^{*}=1/(a_{1}+a_{2})$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{thm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+To illustrate the match between our expansion and this theory, let 
+\begin_inset Formula $r=1$
+\end_inset
+
+, 
+\begin_inset Formula $a_{1}=a_{2}=1$
+\end_inset
+
+, 
+\begin_inset Formula $\tau_{1}=10$
+\end_inset
+
+.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Re s0"
+
+\end_inset
+
+ depicts the principal root as a function of 
+\begin_inset Formula $\tau_{2}$
+\end_inset
+
+ and we note the root at 
+\begin_inset Formula $\tau_{2}=0.379414$
+\end_inset
+
+.
+ We also note that the relation which must be small 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:assump 2"
+
+\end_inset
+
+ is on the order of 
+\begin_inset Formula $10^{-17}$
+\end_inset
+
+ for this set of parameters.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Plot-of-stable"
+
+\end_inset
+
+ depicts asymptotically stable oscillations (solid curve for 
+\begin_inset Formula $\tau_{2}=0.2$
+\end_inset
+
+) and unstable oscillations (dashed curve for 
+\begin_inset Formula $\tau_{2}=1.3$
+\end_inset
+
+).
+ To better illustrate the stable and unstable behaviors, we arbitrarily
+ choose an initial history of 
+\begin_inset Formula $\phi(t)=1\,;\, t\leq0$
+\end_inset
+
+ for the stable solution and an initial history of 
+\begin_inset Formula $\phi(t)=\nicefrac{1}{10}\,;\, t\leq0$
+\end_inset
+
+ for the unstable solution.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename EvalVsTauPlot.pdf
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Re s0"
+
+\end_inset
+
+Plot of the 
+\begin_inset Formula $\mbox{Re}[s_{0}]$
+\end_inset
+
+ as a function of 
+\begin_inset Formula $\tau_{2}$
+\end_inset
+
+ for the linearized two-lag blowfly model in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:linearized y"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename StableUnstableSolnPlot.pdf
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Plot-of-stable"
+
+\end_inset
+
+Plot of stable (solid curve for 
+\begin_inset Formula $\tau_{2}=0.2$
+\end_inset
+
+) and unstable (dashed curve for 
+\begin_inset Formula $\tau_{2}=1.3$
+\end_inset
+
+) solutions to the linearized two-lag blowfly model in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:linearized y"
+
+\end_inset
+
+.
+ For the stable solution, the initial history is 
+\begin_inset Formula $\phi(t)=1$
+\end_inset
+
+ for 
+\begin_inset Formula $t\leq0$
+\end_inset
+
+ and for the unstable solution, the initial history is 
+\begin_inset Formula $\phi(t)=0.1$
+\end_inset
+
+ for 
+\begin_inset Formula $t\leq0$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Conclusion-and-Discussion"
+
+\end_inset
+
+Conclusion and Discussion
+\end_layout
+
+\begin_layout Standard
+In this work we have developed an asymptotic expansion for the roots to
+ a transcendental characteristic equation associated with two-lag DDEs.
+ We have provided numerical evidence supporting the accuracy of our expansion.
+ We have also applied the expansion to a two-lag DDE model of the Australian
+ blowfly, illustrating the Hopf bifurcation transition from stable to unstable
+ oscillations.
+\end_layout
+
+\begin_layout Standard
+There are many intriguing directions one could take with this work.
+ Concerning systems of single-lag DDEs, it is known that the approach presented
+ in Asl and Ulsoy's original article 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "AslUlsoy2003JDynSystMeasControl"
+
+\end_inset
+
+ is only valid when the coefficient matrices in front of the state and lagged
+ state commute.
+ This limitation has been discussed in the literature 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "AslUlsoy2007JDynSystMeasControl,Zafer2007JDynSystMeasControl"
+
+\end_inset
+
+ with Jarlebring 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "JarlebringDamm2007Automatica"
+
+\end_inset
+
+ also noting that the matrices need only be triangularizable.
+ Fortunately, there is an algorithm for working around this problem and
+ the monograph 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "YiNelsonUlsoy2010"
+
+\end_inset
+
+ has a very clear description of how to solve single-lag DDE systems using
+ a 
+\emph on
+matrix 
+\emph default
+Lambert W function.
+ And a reasonable extension would be to develop the framework to identify
+ characteristic roots for two-lag systems of DDEs.
+ Indeed, we have made preliminary efforts in this direction as it is a natural
+ extension to some of the author's previous work 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "BanksBortzHolte2003MathBiosci"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Another direction for future work would be to consider more general multi-lag
+ DDEs.
+ We were surprised to discover that the restrictions placed on the coefficients
+ in the two-lag DDE were satisfied for many of the DDEs we considered.
+ We therefore plan to investigate if the coefficient restrictions for an
+ asymptotic expansion in the three-lag (and higher) DDEs are as generous.
+\end_layout
+
+\begin_layout Section
+Acknowledgements
+\end_layout
+
+\begin_layout Standard
+The author wishes to thank Andrew Christlieb (Michigan State University),
+ Anna Gilbert (University of Michigan, Ann Arbor), and Peter Petre (HRL)
+ for the original discussion which led to the motivating question for this
+ paper.
+ The author also wishes to thank Paul Sacks for direction to the german
+ reference and encouragement ************.
+\end_layout
+
+\begin_layout Standard
+Portions of this work were performed with support from DARPA, AFRL, and
+ HRL, under contract FA8650-11-C-7158.
+\end_layout
+
+\begin_layout Section
+Disclaimer
+\end_layout
+
+\begin_layout Standard
+The views expressed are those of the author and do not reﬂect the ofﬁcial
+ policy or position of the Department of Defense or the U.S.
+ Government.
+ This is in accordance with DoDI 5230.29, January 8, 2009.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "/home/dmbortz/refz/mathbioCU,mathbioCU"
+options "elsarticle-num"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
