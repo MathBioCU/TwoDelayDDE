@@ -72,6 +72,7 @@
 \begin_layout Title
 Translation of: Using asymptotic representations for the investigation the
  integrals speciellen a linear differential equation.
+ II.
 \end_layout
 
 \begin_layout Author
@@ -90,6 +91,30 @@ x\frac{d^{2}y}{dx^{2}}+(\lambda_{1}+\lambda_{2}+2)\frac{dy}{dx}+(x+(\lambda_{1}-
 
 \end_inset
 
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+In this form, the second-order linear differential equation are associated
+ with linear coefficients when speaking of the exceptional cases apart.
+ The case of integer values 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\lambda_{1}+\lambda_{2}$
+\end_inset
+
+ is hereinafter as excluded earlier.
+\end_layout
+
+\end_inset
+
 vermi ~ elst of divergent series
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -99,7 +124,15 @@ S_{2} & = & e^{-ix}x^{-\lambda_{1}-1}\left(B_{0}+\frac{B_{1}}{x}+\frac{B_{2}}{x^
 
 \end_inset
 
+ which 
+\begin_inset Formula $(A)$
+\end_inset
 
+ fomally satisfy, for the whole area of the singularpoint 
+\begin_inset Formula $x=\infty$
+\end_inset
+
+, treated
 \end_layout
 
 \end_body
